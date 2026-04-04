@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useTransform } from 'framer-motion';
+import { useEffect } from 'react';
+import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
 
 interface AnimatedCounterProps {
   value: number;
@@ -27,7 +27,7 @@ export function AnimatedCounter({
   });
 
   useEffect(() => {
-    const animation = motionValue.animate(value, {
+    const animation = animate(motionValue, value, {
       duration: duration / 1000,
       ease: 'easeOut',
     });

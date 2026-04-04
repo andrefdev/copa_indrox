@@ -2,7 +2,7 @@
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Navigation from "@components/astro/Navigation.astro";
-import { HallOfFame } from "@components/react/HallOfFame";
+import { HallOfFame as HallOfFameReact } from "@components/react/HallOfFame";
 import type {
   ParticipantData,
   ProjectSummary,
@@ -79,7 +79,7 @@ const participantData: ParticipantData[] = await Promise.all(
   <!-- Leaderboard -->
   <section class="py-8 sm:py-16 px-5 sm:px-8">
     <div class="w-full max-w-6xl mx-auto">
-      <HallOfFame client:visible participants={participantData} />
+      <HallOfFameReact client:visible participants={participantData} />
     </div>
   </section>
 

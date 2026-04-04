@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface Particle {
   x: number;
@@ -23,7 +23,7 @@ export function FireEffect({
 }: FireEffectProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
-  const animationIdRef = useRef<number>();
+  const animationIdRef = useRef<number>(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;

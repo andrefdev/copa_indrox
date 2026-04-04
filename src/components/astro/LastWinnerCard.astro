@@ -1,7 +1,4 @@
 ---
-import { formatDateSpanish } from '@utils/dates';
-import { formatScore } from '@utils/scores';
-
 interface Props {
   presenterName: string;
   presenterRole: string;
@@ -9,65 +6,84 @@ interface Props {
   projectTitle: string;
   totalScore: number;
   landingUrl?: string;
-  date: Date;
 }
 
-const { presenterName, presenterRole, presenterPhoto, projectTitle, totalScore, landingUrl, date } = Astro.props;
+const {
+  presenterName,
+  presenterRole,
+  presenterPhoto,
+  projectTitle,
+  totalScore,
+  landingUrl,
+} = Astro.props;
 ---
 
-<section class="py-16 px-4">
-  <div class="max-w-6xl mx-auto">
-    <h2 class="text-center font-display text-3xl font-bold text-indrox-cream mb-12">
-      LAST WEEK'S CHAMPION
+<section class="w-full max-w-6xl mx-auto py-20 px-6 sm:px-8">
+  <div class="mb-14 flex flex-col items-center text-center reveal">
+    <div
+      class="font-display text-sm tracking-[3px] text-indrox-purple-light uppercase mb-3 font-bold"
+    >
+      Semana anterior
+    </div>
+    <h2
+      class="font-display text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.1] mb-5 text-indrox-cream font-extrabold"
+    >
+      El campeón
     </h2>
+  </div>
 
-    <div class="rank-1-border bg-gradient-to-br from-indrox-gold/15 via-indrox-bg-card to-indrox-purple-dark/10 rounded-xl p-8 max-w-2xl mx-auto">
-      <div class="text-center mb-8">
-        <div class="text-6xl mb-4">🏆</div>
-        <p class="text-indrox-gold font-bold text-lg mb-2">CHAMPION</p>
-        <p class="text-indrox-cream/60 text-sm">{formatDateSpanish(date)}</p>
+  <div
+    class="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 items-center max-w-[750px] mx-auto rounded-[18px] bg-gradient-to-b from-[#FFD700]/10 to-[#160E22] p-10 relative border-2 border-transparent bg-clip-padding before:content-[''] before:absolute before:-inset-[2px] before:rounded-[inherit] before:bg-[linear-gradient(135deg,#FFD700,#FFA500,#FFD700,#FFEC6E,#FFD700)] before:bg-[length:300%_300%] before:animate-[shimmer-gold_3s_linear_infinite] before:-z-10 text-center md:text-left reveal"
+  >
+    <div class="text-center shrink-0 mx-auto md:mx-0">
+      <div class="text-[3rem] mb-5 block">🏆</div>
+      <img
+        src={presenterPhoto}
+        alt={presenterName}
+        class="w-[140px] h-[140px] rounded-full object-cover border-[4px] border-[#FFD700] shadow-[0_0_40px_rgba(255,215,0,0.5)]"
+        loading="lazy"
+      />
+    </div>
+    <div>
+      <p
+        class="text-[#FFD700] text-[0.8rem] mb-3 tracking-[1.5px] uppercase font-bold"
+      >
+        Ganador de la semana
+      </p>
+      <h3
+        class="text-[2rem] font-display mb-2 font-bold text-indrox-cream leading-tight"
+      >
+        {presenterName}
+      </h3>
+      <p class="text-indrox-purple-light mb-6 text-[0.95rem] font-medium">
+        {presenterRole}
+      </p>
+      <div
+        class="bg-[#FFD700]/10 border-[1.5px] border-[#FFD700]/25 rounded-[14px] p-5 mb-6 text-center md:text-left"
+      >
+        <p
+          class="text-[0.8rem] text-indrox-cream/60 mb-2 tracking-[1px] uppercase font-bold"
+        >
+          Proyecto ganador
+        </p>
+        <p class="font-bold text-indrox-cream mb-3 text-[1.05rem] leading-snug">
+          {projectTitle}
+        </p>
+        <p class="text-[#FFD700] font-extrabold text-[1.1rem]">
+          {totalScore.toFixed(1)}/30 puntos
+        </p>
       </div>
-
-      <div class="flex flex-col sm:flex-row items-center gap-8">
-        <!-- Photo -->
-        <div class="flex-shrink-0">
-          <img
-            src={presenterPhoto}
-            alt={presenterName}
-            class="w-40 h-40 rounded-full object-cover border-4 border-indrox-gold shadow-lg shadow-indrox-gold/50 animate-pulse-gold-shadow"
-            loading="lazy"
-          />
-        </div>
-
-        <!-- Info -->
-        <div class="flex-1 text-center sm:text-left">
-          <h3 class="text-2xl font-bold text-indrox-cream mb-1">{presenterName}</h3>
-          <p class="text-indrox-purple mb-6">{presenterRole}</p>
-
-          <div class="bg-indrox-bg-card/50 rounded-lg p-4 border border-indrox-gold/30 mb-6">
-            <p class="text-xs text-indrox-cream/60 mb-2">WINNING PROJECT</p>
-            <p class="font-bold text-indrox-cream mb-3">{projectTitle}</p>
-
-            {landingUrl && (
-              <a
-                href={landingUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-block px-4 py-2 bg-indrox-purple hover:bg-indrox-purple-light text-white text-sm font-bold rounded transition-colors"
-              >
-                View Project →
-              </a>
-            )}
-          </div>
-
-          <div class="flex items-center justify-center sm:justify-start gap-4">
-            <div class="text-center">
-              <div class="text-3xl font-bold text-indrox-gold">{formatScore(totalScore)}</div>
-              <p class="text-xs text-indrox-cream/60">points</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {
+        landingUrl && (
+          <a
+            href={landingUrl}
+            target="_blank"
+            class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-body text-[0.95rem] font-semibold text-white no-underline transition-all duration-300 bg-gradient-to-br from-indrox-purple to-indrox-purple-dark shadow-[0_4px_20px_rgba(144,0,255,0.3)] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(144,0,255,0.45)] w-full sm:w-auto"
+          >
+            Ver proyecto →
+          </a>
+        )
+      }
     </div>
   </div>
 </section>

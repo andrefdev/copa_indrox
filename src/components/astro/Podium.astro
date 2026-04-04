@@ -1,5 +1,5 @@
 ---
-import { formatScore } from '@utils/scores';
+import { formatScore } from "@utils/scores";
 
 interface PodiumPlace {
   name: string;
@@ -17,55 +17,125 @@ interface Props {
 const { first, second, third } = Astro.props;
 ---
 
-<div class="py-12">
-  <h2 class="text-center font-display text-3xl font-bold text-indrox-cream mb-12">
-    🏆 TOP 3 THIS MONTH
-  </h2>
+<section class="w-full max-w-6xl mx-auto py-20 px-6 sm:px-8">
+  <div class="mb-14 flex flex-col items-center text-center reveal">
+    <div
+      class="font-display text-sm tracking-[3px] text-indrox-purple-light uppercase mb-3 font-bold"
+    >
+      Líderes
+    </div>
+    <h2
+      class="font-display text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.1] mb-5 text-indrox-cream font-extrabold"
+    >
+      Top 3 Histórico
+    </h2>
+  </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
-    <!-- Silver (2nd place) -->
-    <a href={`/hall-of-fame`} class="group md:order-2 transform hover:scale-105 transition-transform">
-      <div class="rank-2-border bg-indrox-bg-card rounded-lg p-6 text-center">
-        <div class="mb-4 text-4xl">🥈</div>
-        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-indrox-silver">
-          <img src={second.photo} alt={second.name} class="w-full h-full object-cover" loading="lazy" />
+  <div
+    class="grid grid-cols-1 md:grid-cols-3 gap-6 items-end max-w-4xl mx-auto reveal"
+  >
+    <!-- Segundo lugar -->
+    <a
+      href={`/hall-of-fame`}
+      class="group md:order-2 transform hover:scale-105 transition-transform no-underline block"
+    >
+      <div
+        class="bg-[#160E22] border-t-4 border-[#C0C0C0] rounded-2xl p-6 text-center shadow-[0_8px_30px_rgba(192,192,192,0.05)] hover:shadow-[0_12px_40px_rgba(192,192,192,0.1)]"
+      >
+        <div class="mb-4 text-4xl block">🥈</div>
+        <div
+          class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-[#C0C0C0]"
+        >
+          <img
+            src={second.photo}
+            alt={second.name}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
-        <h3 class="font-bold text-lg text-indrox-cream group-hover:text-indrox-silver transition-colors mb-1">
+        <h3
+          class="font-bold text-lg text-indrox-cream group-hover:text-[#C0C0C0] transition-colors mb-1 tracking-tight"
+        >
           {second.name}
         </h3>
-        <div class="text-2xl font-bold text-indrox-silver">{formatScore(second.score)}</div>
-        <div class="text-xs text-indrox-cream/60">points</div>
+        <div class="text-2xl font-extrabold text-[#C0C0C0] leading-none mb-1">
+          {formatScore(second.score)}
+        </div>
+        <div
+          class="text-xs text-indrox-cream/60 uppercase tracking-widest font-bold"
+        >
+          puntos
+        </div>
       </div>
     </a>
 
-    <!-- Gold (1st place) -->
-    <a href={`/hall-of-fame`} class="group md:order-1">
-      <div class="rank-1-border bg-gradient-to-b from-indrox-gold/10 to-indrox-bg-card rounded-lg p-8 text-center transform hover:scale-110 transition-transform">
-        <div class="mb-4 text-5xl animate-bounce">👑</div>
-        <div class="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden border-4 border-indrox-gold shadow-lg shadow-indrox-gold/50 animate-pulse-gold-shadow">
-          <img src={first.photo} alt={first.name} class="w-full h-full object-cover" loading="lazy" />
+    <!-- Primer lugar -->
+    <a href={`/hall-of-fame`} class="group md:order-1 no-underline block">
+      <div
+        class="bg-gradient-to-b from-[#FFD700]/10 to-[#160E22] border-t-4 border-[#FFD700] rounded-2xl p-8 text-center transform hover:scale-110 transition-transform shadow-[0_15px_40px_rgba(255,215,0,0.1)] hover:shadow-[0_20px_50px_rgba(255,215,0,0.2)]"
+      >
+        <div class="mb-4 text-5xl animate-[bounce_2s_infinite] block">👑</div>
+        <div
+          class="w-28 h-28 mx-auto mb-4 rounded-full overflow-hidden border-[4px] border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.3)]"
+        >
+          <img
+            src={first.photo}
+            alt={first.name}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
-        <h3 class="font-display text-2xl font-bold text-indrox-cream group-hover:text-indrox-gold transition-colors mb-2">
+        <h3
+          class="font-display text-2xl font-bold text-indrox-cream group-hover:text-[#FFD700] transition-colors mb-2 tracking-tight"
+        >
           {first.name}
         </h3>
-        <div class="text-3xl font-bold text-indrox-gold">{formatScore(first.score)}</div>
-        <div class="text-sm text-indrox-cream/60 font-semibold">LEGEND</div>
+        <div
+          class="text-[2.25rem] font-extrabold text-[#FFD700] leading-none mb-2"
+        >
+          {formatScore(first.score)}
+        </div>
+        <div
+          class="text-xs text-[#FFD700] bg-[#FFD700]/10 px-3 py-1 rounded-full uppercase tracking-[2px] font-bold inline-block mx-auto border border-[#FFD700]/20"
+        >
+          Leyenda
+        </div>
       </div>
     </a>
 
-    <!-- Bronze (3rd place) -->
-    <a href={`/hall-of-fame`} class="group md:order-3 transform hover:scale-105 transition-transform">
-      <div class="rank-3-border bg-indrox-bg-card rounded-lg p-6 text-center">
-        <div class="mb-4 text-4xl">🥉</div>
-        <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-indrox-bronze">
-          <img src={third.photo} alt={third.name} class="w-full h-full object-cover" loading="lazy" />
+    <!-- Tercer lugar -->
+    <a
+      href={`/hall-of-fame`}
+      class="group md:order-3 transform hover:scale-105 transition-transform no-underline block"
+    >
+      <div
+        class="bg-[#160E22] border-t-4 border-[#CD7F32] rounded-2xl p-6 text-center shadow-[0_8px_30px_rgba(205,127,50,0.05)] hover:shadow-[0_12px_40px_rgba(205,127,50,0.1)]"
+      >
+        <div class="mb-4 text-4xl block">🥉</div>
+        <div
+          class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-2 border-[#CD7F32]"
+        >
+          <img
+            src={third.photo}
+            alt={third.name}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
-        <h3 class="font-bold text-lg text-indrox-cream group-hover:text-indrox-bronze transition-colors mb-1">
+        <h3
+          class="font-bold text-lg text-indrox-cream group-hover:text-[#CD7F32] transition-colors mb-1 tracking-tight"
+        >
           {third.name}
         </h3>
-        <div class="text-2xl font-bold text-indrox-bronze">{formatScore(third.score)}</div>
-        <div class="text-xs text-indrox-cream/60">points</div>
+        <div class="text-2xl font-extrabold text-[#CD7F32] leading-none mb-1">
+          {formatScore(third.score)}
+        </div>
+        <div
+          class="text-xs text-indrox-cream/60 uppercase tracking-widest font-bold"
+        >
+          puntos
+        </div>
       </div>
     </a>
   </div>
-</div>
+</section>
