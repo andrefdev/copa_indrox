@@ -1,0 +1,115 @@
+---
+/**
+ * Hero section for home page
+ */
+---
+
+<section
+  class="relative min-h-[70vh] sm:min-h-[75vh] flex flex-col items-center justify-start pt-16 sm:pt-20 px-6 pb-20 overflow-hidden"
+>
+  <!-- Dynamic premium background glow -->
+  <div
+    class="absolute inset-0 z-0 pointer-events-none bg-[radial-gradient(ellipse_800px_500px_at_50%_0%,rgba(144,0,255,0.15)_0%,transparent_80%),radial-gradient(ellipse_600px_600px_at_100%_20%,rgba(74,124,255,0.08)_0%,transparent_60%),radial-gradient(ellipse_400px_400px_at_0%_80%,rgba(144,0,255,0.08)_0%,transparent_70%)]"
+  >
+  </div>
+
+  <!-- Content Container -->
+  <div
+    class="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center text-center"
+  >
+    <!-- Status Badge -->
+    <div
+      class="inline-flex items-center gap-3 bg-indrox-purple/10 border border-indrox-purple/30 shadow-[0_0_20px_rgba(144,0,255,0.15)] rounded-full px-5 py-2 mb-10 backdrop-blur-md animate-in fade-in slide-in-from-bottom-4 duration-700"
+    >
+      <span
+        class="w-2 h-2 bg-indrox-purple-light rounded-full animate-pulse shadow-[0_0_8px_var(--color-indrox-purple-light)]"
+      ></span>
+      <span
+        class="text-[0.75rem] font-bold text-indrox-purple-light tracking-[2px] uppercase"
+        >Temporada 2026 — Inscripciones Abiertas</span
+      >
+    </div>
+
+    <!-- Trophy / Emoji with soft glow float -->
+    <div
+      class="text-[5.5rem] sm:text-8xl mb-8 leading-none block animate-[float_6s_ease-in-out_infinite] drop-shadow-[0_15px_35px_rgba(144,0,255,0.3)]"
+    >
+      🏆
+    </div>
+
+    <!-- Massive Heading -->
+    <h1
+      class="font-display text-[clamp(3.5rem,10vw,7.5rem)] sm:text-[clamp(4.5rem,12vw,9rem)] font-extrabold leading-[0.9] tracking-tighter mb-8 bg-gradient-to-br from-white via-indrox-cream to-indrox-purple/40 bg-clip-text text-transparent animate-in fade-in slide-in-from-bottom-8 duration-700 delay-150 relative"
+    >
+      COPA INDROX
+      <div
+        class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[180px] h-[4px] bg-gradient-to-r from-transparent via-indrox-purple to-transparent rounded-full opacity-60"
+      >
+      </div>
+    </h1>
+
+    <!-- Subheading perfectly balanced -->
+    <p
+      class="text-[clamp(1.15rem,2.5vw,1.45rem)] text-indrox-cream/80 max-w-2xl mx-auto leading-[1.7] animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300 font-medium"
+    >
+      Cada lunes, una idea. Cada idea, una oportunidad.<br
+        class="hidden sm:block"
+      />
+      <strong class="text-indrox-purple-light font-bold"
+        >Construye con Claude</strong
+      >, presenta tu solución y compite por el reconocimiento del equipo.
+    </p>
+
+    <!-- CTAs -->
+    <div
+      class="mt-14 flex flex-col sm:flex-row gap-5 justify-center w-full sm:w-auto animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500"
+    >
+      <a
+        href="#como-funciona"
+        class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full font-body text-[1.05rem] font-bold text-white no-underline transition-all duration-300 bg-gradient-to-br from-indrox-purple hover:from-indrox-purple-light to-indrox-purple-dark shadow-[0_8px_30px_rgba(144,0,255,0.35)] hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(144,0,255,0.5)] border border-white/5 w-full sm:w-auto"
+      >
+        Quiero participar
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="12" y1="5" x2="12" y2="19"></line><polyline
+            points="19 12 12 19 5 12"></polyline></svg
+        >
+      </a>
+      <a
+        href="#premios"
+        class="inline-flex items-center justify-center gap-3 px-10 py-4 rounded-full font-body text-[1.05rem] font-bold text-indrox-cream no-underline transition-all duration-300 bg-white/5 border-[1.5px] border-white/10 hover:border-indrox-purple/50 hover:text-indrox-purple-light hover:bg-indrox-purple/10 hover:-translate-y-1 w-full sm:w-auto backdrop-blur-sm"
+      >
+        Ver premios
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll Hint Indicator -->
+  <a
+    href="#como-funciona"
+    class="mt-12 sm:mt-16 relative z-10 flex flex-col items-center gap-3 text-indrox-cream/30 hover:text-indrox-purple-light transition-colors text-[0.75rem] tracking-[3px] uppercase font-bold animate-bounce cursor-pointer group"
+  >
+    <span>Descubre</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="group-hover:translate-y-1 transition-transform"
+      ><path d="m6 9 6 6 6-6"></path></svg
+    >
+  </a>
+</section>

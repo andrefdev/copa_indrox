@@ -1,0 +1,49 @@
+---
+import { formatDateSpanish } from '@utils/dates';
+
+interface Props {
+  presenterName: string;
+  presenterRole: string;
+  presenterPhoto: string;
+  projectTitle: string;
+  date: Date;
+}
+
+const { presenterName, presenterRole, presenterPhoto, projectTitle, date } = Astro.props;
+---
+
+<section class="py-16 px-4">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-center font-display text-3xl font-bold text-indrox-cream mb-12">
+      NEXT WEEK'S PRESENTER
+    </h2>
+
+    <div class="bg-gradient-to-r from-indrox-purple/10 to-indrox-purple-dark/10 border-2 border-indrox-purple/40 rounded-xl p-8 max-w-2xl mx-auto backdrop-blur-sm">
+      <div class="flex flex-col sm:flex-row items-center gap-8">
+        <!-- Photo -->
+        <div class="flex-shrink-0">
+          <img
+            src={presenterPhoto}
+            alt={presenterName}
+            class="w-40 h-40 rounded-full object-cover border-4 border-indrox-purple shadow-lg shadow-indrox-purple/30"
+            loading="lazy"
+          />
+        </div>
+
+        <!-- Info -->
+        <div class="flex-1 text-center sm:text-left">
+          <p class="text-sm text-indrox-gold font-bold mb-2">PRESENTING ON</p>
+          <p class="text-lg text-indrox-cream/70 mb-4">{formatDateSpanish(date)}</p>
+
+          <h3 class="text-2xl font-bold text-indrox-cream mb-1">{presenterName}</h3>
+          <p class="text-indrox-purple mb-6">{presenterRole}</p>
+
+          <div class="bg-indrox-bg-card/50 rounded-lg p-4 border border-indrox-purple/20">
+            <p class="text-xs text-indrox-cream/60 mb-2">PROJECT TITLE</p>
+            <p class="font-bold text-indrox-cream">{projectTitle}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

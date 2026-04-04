@@ -1,0 +1,11 @@
+Download and place the following fonts in this directory:
+
+1. BebasNeue-Regular.woff2
+   - Download from: https://fonts.google.com/download?family=Bebas%20Neue
+   - Use the Regular (400) weight version
+
+2. DMSans-Variable.woff2
+   - Download from: https://fonts.google.com/download?family=DM%20Sans
+   - Use the Variable font that includes all weights (100-900)
+
+After downloading, rename the files to match the names above exactly.

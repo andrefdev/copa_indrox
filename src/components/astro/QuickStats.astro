@@ -1,0 +1,31 @@
+---
+interface Stat {
+  label: string;
+  value: string | number;
+  icon: string;
+}
+
+interface Props {
+  stats: Stat[];
+}
+
+const { stats } = Astro.props;
+---
+
+<section class="py-16 px-4 bg-gradient-to-r from-indrox-purple/5 via-transparent to-indrox-purple/5">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-center font-display text-3xl font-bold text-indrox-cream mb-12">
+      COPA BY THE NUMBERS
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {stats.map((stat) => (
+        <div class="bg-indrox-bg-card border border-indrox-purple/20 rounded-lg p-6 text-center hover:border-indrox-purple/40 transition-colors">
+          <div class="text-4xl mb-3">{stat.icon}</div>
+          <div class="text-3xl font-bold text-indrox-gold mb-2">{stat.value}</div>
+          <p class="text-indrox-cream/70 font-medium">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

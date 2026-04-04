@@ -1,0 +1,2 @@
+This is a placeholder. The actual og-default.png image (1200x630px) should be created and placed here.
+For now, place any 1200x630 PNG image at public/og/og-default.png

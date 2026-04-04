@@ -1,0 +1,86 @@
+---
+import { formatDateSpanish, formatDateISO } from '@utils/dates';
+
+interface Props {
+  week: number;
+  date: Date;
+  presenterName: string;
+  presenterPhoto: string;
+  projectTitle: string;
+  totalScore: number;
+  isWinner: boolean;
+  slug: string;
+  compact?: boolean;
+}
+
+const {
+  week,
+  date,
+  presenterName,
+  presenterPhoto,
+  projectTitle,
+  totalScore,
+  isWinner,
+  slug,
+  compact = false
+} = Astro.props;
+---
+
+<a href={`/semana/${slug}`} class="group">
+  <div class={`relative bg-indrox-bg-card rounded-lg overflow-hidden transition-all duration-300 hover:bg-indrox-bg-card-hover hover:shadow-lg hover:shadow-indrox-purple/20 ${
+    compact ? 'p-4' : 'p-6'
+  } ${isWinner ? 'border-2 border-indrox-gold' : 'border border-indrox-purple/20'}`}>
+    {isWinner && (
+      <div class="absolute top-3 right-3 bg-indrox-gold text-indrox-bg text-xs font-bold px-3 py-1 rounded-full">
+        🏆 WINNER
+      </div>
+    )}
+
+    <div class={compact ? 'space-y-2' : 'space-y-4'}>
+      <!-- Week number & date -->
+      <div class="flex items-center justify-between">
+        <span class="text-sm font-bold text-indrox-gold">WEEK {week}</span>
+        <span class="text-xs text-indrox-cream/60">{formatDateISO(date)}</span>
+      </div>
+
+      {!compact && (
+        <>
+          <!-- Presenter info -->
+          <div class="flex items-center gap-3">
+            <img
+              src={presenterPhoto}
+              alt={presenterName}
+              class="w-12 h-12 rounded-full object-cover border border-indrox-purple"
+              loading="lazy"
+            />
+            <div>
+              <p class="font-medium text-indrox-cream text-sm">{presenterName}</p>
+              <p class="text-xs text-indrox-purple">{formatDateSpanish(date)}</p>
+            </div>
+          </div>
+        </>
+      )}
+
+      <!-- Project title -->
+      <h3 class="font-bold text-indrox-cream group-hover:text-indrox-purple transition-colors line-clamp-2">
+        {projectTitle}
+      </h3>
+
+      {!compact && (
+        <!-- Score -->
+        <div class="pt-2 border-t border-indrox-purple/20">
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-indrox-purple">Total Score</span>
+            <span class="font-bold text-indrox-gold">{totalScore.toFixed(1)}/30</span>
+          </div>
+          <div class="w-full h-2 bg-indrox-bg rounded mt-2 overflow-hidden">
+            <div
+              class={`h-full ${isWinner ? 'bg-indrox-gold' : 'bg-indrox-purple'}`}
+              style={`width: ${(totalScore / 30) * 100}%`}
+            ></div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</a>

@@ -1,0 +1,96 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/astro/Navigation.astro";
+import { HallOfFame } from "@components/react/HallOfFame";
+import type {
+  ParticipantData,
+  ProjectSummary,
+} from "@components/react/HallOfFame.types";
+
+// Fetch all data
+const participants = await getCollection("participants");
+const weeks = await getCollection("weeks");
+
+// Build participant data structure for React island
+const participantData: ParticipantData[] = await Promise.all(
+  participants
+    .sort((a, b) => b.data.totalScore - a.data.totalScore)
+    .map(async (p) => {
+      // Find all weeks where this participant was the presenter
+      const participantWeeks = weeks.filter(
+        (w) => w.data.presenter.id === p.id,
+      );
+
+      const projects: ProjectSummary[] = participantWeeks.map((w) => ({
+        weekSlug: w.id,
+        week: w.data.week,
+        title: w.data.projectTitle,
+        date: w.data.date.toISOString(),
+        totalScore: w.data.totalScore,
+        isWinner: w.data.isWinner,
+      }));
+
+      return {
+        slug: p.id,
+        name: p.data.name,
+        role: p.data.role,
+        area: p.data.area,
+        photo: p.data.photo,
+        totalScore: p.data.totalScore,
+        wins: p.data.wins,
+        participations: p.data.participations,
+        joinedWeek: p.data.joinedWeek,
+        bio: p.body,
+        projects,
+      };
+    }),
+);
+---
+
+<BaseLayout
+  title="Hall of Fame — Copa Indrox"
+  description="The legendary leaderboard of Copa Indrox. See the top performers and innovative ideas from our competition."
+>
+  <Navigation />
+
+  <!-- Hero -->
+  <section
+    class="min-h-[50vh] flex flex-col items-center justify-center px-5 sm:px-8 py-12 sm:py-20 bg-gradient-to-b from-indrox-purple/5 to-transparent text-center"
+  >
+    <div class="w-full max-w-[750px] mx-auto">
+      <div class="text-[clamp(3.5rem,8vw,5rem)] mb-6 block">🏆</div>
+      <h1
+        class="font-display text-[clamp(2.5rem,6vw,3.75rem)] font-extrabold text-indrox-cream mb-4 tracking-tight"
+      >
+        HALL OF FAME
+      </h1>
+      <p class="text-[1.2rem] text-indrox-purple-light mb-4">
+        The legendary leaderboard of Copa Indrox
+      </p>
+      <p class="text-indrox-cream/60 text-[0.95rem]">
+        {participantData.length} competitors • {weeks.length} sessions • {
+          participantData.reduce((sum, p) => sum + p.wins, 0)
+        } victories
+      </p>
+    </div>
+  </section>
+
+  <!-- Leaderboard -->
+  <section class="py-8 sm:py-16 px-5 sm:px-8">
+    <div class="w-full max-w-6xl mx-auto">
+      <HallOfFame client:visible participants={participantData} />
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer
+    class="text-center py-12 px-6 text-indrox-cream/50 text-[0.85rem] border-t border-white/10"
+  >
+    <p>
+      <span class="text-indrox-purple-light font-bold">Copa Indrox</span> © 2026 —
+      Every Monday, an idea. Every idea, an opportunity.
+    </p>
+    <p class="mt-2 opacity-50">Built with Claude AI and Astro</p>
+  </footer>
+</BaseLayout>

@@ -1,0 +1,250 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Navigation from '@components/astro/Navigation.astro';
+import ScoreBar from '@components/astro/ScoreBar.astro';
+import { formatDateSpanish } from '@utils/dates';
+import { formatScore } from '@utils/scores';
+
+// Generate static paths for all weeks
+export async function getStaticPaths() {
+  const weeks = await getCollection('weeks');
+  return weeks.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: any;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Get presenter data
+const presenter = await getEntry('participants', entry.data.presenter.id);
+
+// Get all weeks for navigation
+const allWeeks = await getCollection('weeks');
+const sortedWeeks = allWeeks.sort((a, b) => b.data.week - a.data.week);
+const currentIndex = sortedWeeks.findIndex((w) => w.id === entry.id);
+const prevWeek = currentIndex > 0 ? sortedWeeks[currentIndex - 1] : null;
+const nextWeek = currentIndex < sortedWeeks.length - 1 ? sortedWeeks[currentIndex + 1] : null;
+
+const { week, date, projectTitle, projectDescription, landingUrl, scores, totalScore, isWinner } = entry.data;
+---
+
+<BaseLayout
+  title={`Week ${week}: ${projectTitle} — Copa Indrox`}
+  description={projectDescription}
+  ogImage={presenter.data.photo}
+>
+  <Navigation />
+
+  <!-- Header -->
+  <section class="bg-gradient-to-b from-indrox-purple/10 to-transparent px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <p class="text-indrox-gold font-bold text-sm mb-2">WEEK {week}</p>
+          <h1 class="font-display text-4xl md:text-5xl font-bold text-indrox-cream">
+            {projectTitle}
+          </h1>
+        </div>
+        {isWinner && (
+          <div class="text-5xl animate-bounce">🏆</div>
+        )}
+      </div>
+      <p class="text-indrox-cream/70 max-w-2xl">
+        {projectDescription}
+      </p>
+    </div>
+  </section>
+
+  <!-- Presenter & Scores -->
+  <section class="px-4 py-12 bg-indrox-bg-card/50">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <!-- Presenter Info -->
+        <div class="md:col-span-1">
+          <div class="bg-indrox-bg-card rounded-lg p-6 border border-indrox-purple/20">
+            <img
+              src={presenter.data.photo}
+              alt={presenter.data.name}
+              class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-2 border-indrox-purple"
+              loading="lazy"
+            />
+            <h3 class="font-bold text-indrox-cream text-center text-lg mb-1">
+              {presenter.data.name}
+            </h3>
+            <p class="text-indrox-purple text-center text-sm mb-4">{presenter.data.role}</p>
+            <p class="text-xs text-indrox-cream/60 text-center">{presenter.data.area}</p>
+
+            {isWinner && (
+              <div class="mt-4 bg-indrox-gold/10 border border-indrox-gold rounded-lg p-3 text-center">
+                <p class="text-indrox-gold font-bold text-sm">WEEKLY WINNER</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Scores -->
+        <div class="md:col-span-2">
+          <div class="space-y-6">
+            <div>
+              <ScoreBar label="Impact" score={scores.impact} />
+            </div>
+            <div>
+              <ScoreBar label="Presentation" score={scores.presentation} color="purple" />
+            </div>
+            <div>
+              <ScoreBar label="Creativity" score={scores.creativity} color="gold" />
+            </div>
+
+            <!-- Total Score -->
+            <div class="bg-gradient-to-r from-indrox-purple/10 to-indrox-gold/10 border border-indrox-purple/20 rounded-lg p-6 mt-8">
+              <p class="text-sm text-indrox-cream/60 mb-2">TOTAL SCORE</p>
+              <div class="flex items-baseline gap-2">
+                <span class="text-5xl font-bold text-indrox-gold">
+                  {formatScore(totalScore)}
+                </span>
+                <span class="text-xl text-indrox-cream/60">/30</span>
+              </div>
+              <div class="w-full h-2 bg-indrox-bg-card rounded-full mt-4 overflow-hidden">
+                <div
+                  class={`h-full ${isWinner ? 'bg-indrox-gold' : 'bg-indrox-purple'}`}
+                  style={`width: ${(totalScore / 30) * 100}%`}
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meta Info -->
+      <div class="flex flex-wrap items-center gap-6 text-sm text-indrox-cream/60 pt-6 border-t border-indrox-purple/20">
+        <div>
+          <span class="font-bold text-indrox-cream">📅 Date</span><br />
+          {formatDateSpanish(date)}
+        </div>
+        <div>
+          <span class="font-bold text-indrox-cream">👤 Presenter</span><br />
+          {presenter.data.name}
+        </div>
+        <div>
+          <span class="font-bold text-indrox-cream">🎯 Area</span><br />
+          {presenter.data.area}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Description -->
+  <section class="px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <div class="prose prose-invert max-w-none">
+        <div class="bg-indrox-bg-card border border-indrox-purple/20 rounded-lg p-8">
+          <h2 class="font-display text-2xl font-bold text-indrox-cream mb-6">
+            Project Details
+          </h2>
+          <div class="text-indrox-cream/80 space-y-4">
+            <Content />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Landing Page Link -->
+  {landingUrl && (
+    <section class="px-4 py-8 bg-indrox-purple/10">
+      <div class="max-w-4xl mx-auto">
+        <a
+          href={landingUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-indrox-purple hover:bg-indrox-purple-light text-white font-bold rounded-lg transition-colors"
+        >
+          View Project Landing Page
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4m-4-6l6 6m0 0l-6 6m6-6H3"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- Navigation -->
+  <section class="px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {prevWeek ? (
+          <a
+            href={`/semana/${prevWeek.id}`}
+            class="flex items-center gap-2 px-6 py-3 bg-indrox-bg-card border border-indrox-purple/20 hover:border-indrox-purple text-indrox-cream hover:text-indrox-purple font-bold rounded-lg transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Previous Week
+          </a>
+        ) : (
+          <div></div>
+        )}
+
+        {nextWeek ? (
+          <a
+            href={`/semana/${nextWeek.id}`}
+            class="flex items-center justify-between gap-2 px-6 py-3 bg-indrox-bg-card border border-indrox-purple/20 hover:border-indrox-purple text-indrox-cream hover:text-indrox-purple font-bold rounded-lg transition-colors sm:col-start-2"
+          >
+            Next Week
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        ) : (
+          <div></div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Hall of Fame -->
+  <section class="px-4 py-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <a
+        href="/hall-of-fame"
+        class="text-indrox-purple hover:text-indrox-purple-light font-bold transition-colors"
+      >
+        ← Back to Hall of Fame
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-indrox-bg-card border-t border-indrox-purple/20 py-12 px-4 mt-16">
+    <div class="max-w-6xl mx-auto text-center text-indrox-cream/60 text-sm">
+      <p class="mb-4">Copa Indrox © 2026 — Every Monday, an idea. Every idea, an opportunity.</p>
+      <p>Built with Claude AI and Astro</p>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style is:global>
+  .prose-invert {
+    --prose-body: var(--color-indrox-cream);
+    --prose-headings: var(--color-indrox-cream);
+    --prose-lead: var(--color-indrox-cream);
+    --prose-links: var(--color-indrox-purple);
+    --prose-code: var(--color-indrox-gold);
+  }
+
+  .prose-invert a {
+    color: var(--color-indrox-purple);
+  }
+
+  .prose-invert a:hover {
+    color: var(--color-indrox-purple-light);
+  }
+</style>

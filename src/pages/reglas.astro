@@ -1,0 +1,317 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Navigation from "@components/astro/Navigation.astro";
+import ScoreBar from "@components/astro/ScoreBar.astro";
+---
+
+<BaseLayout
+  title="Reglas — Copa Indrox"
+  description="Cómo funciona la Copa Indrox, criterios de evaluación y formato de competencia."
+>
+  <Navigation />
+
+  <!-- Hero -->
+  <section
+    class="min-h-[40vh] flex flex-col items-center justify-center px-5 sm:px-8 py-12 sm:py-20 bg-gradient-to-b from-indrox-purple/5 to-transparent text-center"
+  >
+    <div class="w-full max-w-[750px] mx-auto">
+      <h1
+        class="font-display text-[clamp(2.5rem,6vw,3.75rem)] font-extrabold text-indrox-cream mb-4 tracking-tight"
+      >
+        HOW IT WORKS
+      </h1>
+      <p class="text-[1.2rem] text-indrox-purple-light leading-relaxed">
+        Understand the Copa Indrox competition format, evaluation criteria, and
+        prizes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="py-16 px-5 sm:px-8">
+    <div class="w-full max-w-[900px] mx-auto flex flex-col gap-16">
+      <!-- How It Works -->
+      <div>
+        <h2
+          class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
+        >
+          📋 THE FORMAT
+        </h2>
+        <div class="flex flex-col gap-5">
+          {
+            [
+              {
+                step: 1,
+                title: "Proposal Submission",
+                desc: "Submit your operational improvement idea built with Claude AI.",
+              },
+              {
+                step: 2,
+                title: "Presentation",
+                desc: "Present your solution on Monday for 10 minutes with live demo.",
+              },
+              {
+                step: 3,
+                title: "Evaluation",
+                desc: "The team evaluates your work across Impact, Presentation, and Creativity.",
+              },
+              {
+                step: 4,
+                title: "Winner Announcement",
+                desc: "The top scorer wins weekly, monthly, and quarterly prizes.",
+              },
+            ].map((item) => (
+              <div class="flex gap-5 items-start">
+                <div class="shrink-0 w-12 h-12 bg-indrox-purple rounded-full flex items-center justify-center font-bold text-white text-base">
+                  {item.step}
+                </div>
+                <div>
+                  <h3 class="text-[1.15rem] font-bold text-indrox-cream mb-1.5">
+                    {item.title}
+                  </h3>
+                  <p class="text-indrox-cream/70 text-[0.95rem] leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Evaluation Criteria -->
+      <div>
+        <h2
+          class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
+        >
+          ⭐ EVALUATION CRITERIA
+        </h2>
+        <p class="text-indrox-cream/70 mb-8 leading-relaxed">
+          All presentations are scored on three dimensions. The total score
+          determines the winner.
+        </p>
+
+        <div
+          class="bg-[#160E22]/50 border border-indrox-purple/20 rounded-2xl p-8"
+        >
+          <div class="py-4">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-[1.15rem] font-bold text-indrox-cream">Impact</h3>
+              <span class="text-[#FFD700] font-bold text-base">33%</span>
+            </div>
+            <p class="text-indrox-cream/70 mb-4 text-[0.95rem] leading-relaxed">
+              How much does this solution improve operations? Will it save time,
+              reduce costs, or improve quality?
+            </p>
+            <ScoreBar label="Impact Score (0-10)" score={8} />
+          </div>
+
+          <div class="py-4 border-t border-indrox-purple/20 pt-8 mt-4">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-[1.15rem] font-bold text-indrox-cream">
+                Presentation
+              </h3>
+              <span class="text-[#FFD700] font-bold text-base">33%</span>
+            </div>
+            <p class="text-indrox-cream/70 mb-4 text-[0.95rem] leading-relaxed">
+              How well is the idea communicated? Is the demo clear, engaging,
+              and professional?
+            </p>
+            <ScoreBar
+              label="Presentation Score (0-10)"
+              score={9}
+              color="purple"
+            />
+          </div>
+
+          <div class="py-4 border-t border-indrox-purple/20 pt-8 mt-4">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-[1.15rem] font-bold text-indrox-cream">
+                Creativity
+              </h3>
+              <span class="text-[#FFD700] font-bold text-base">33%</span>
+            </div>
+            <p class="text-indrox-cream/70 mb-4 text-[0.95rem] leading-relaxed">
+              How innovative is the solution? Does it use Claude in a novel or
+              unexpected way?
+            </p>
+            <ScoreBar
+              label="Creativity Score (0-10)"
+              score={8.5}
+              color="gold"
+            />
+          </div>
+        </div>
+
+        <div
+          class="mt-8 bg-indrox-purple/10 border border-indrox-purple/30 rounded-xl p-6"
+        >
+          <p class="font-bold text-indrox-cream mb-1.5">
+            Maximum Total Score: 30 points
+          </p>
+          <p class="text-indrox-cream/70 text-[0.9rem]">
+            Total Score = Impact + Presentation + Creativity (each 0-10)
+          </p>
+        </div>
+      </div>
+
+      <!-- Session Timeline -->
+      <div>
+        <h2
+          class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
+        >
+          ⏱️ SESSION TIMELINE
+        </h2>
+        <div class="flex flex-col gap-3">
+          {
+            [
+              {
+                time: "09:50",
+                event: "Presenter joins call (technical check)",
+              },
+              { time: "10:00", event: "Introduction & context (1 min)" },
+              { time: "10:01", event: "Live demo & presentation (6 min)" },
+              { time: "10:07", event: "Q&A from team (2 min)" },
+              { time: "10:09", event: "Voting & scoring begins" },
+              { time: "10:10", event: "Results announced" },
+            ].map((item) => (
+              <div class="flex items-center gap-5 bg-[#160E22] border border-indrox-purple/20 rounded-xl px-6 py-[1.1rem] transition-colors hover:border-indrox-purple/40">
+                <span class="font-bold text-[#FFD700] text-[1.1rem] min-w-fit font-display">
+                  {item.time}
+                </span>
+                <p class="text-indrox-cream text-[0.95rem]">{item.event}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Prizes -->
+      <div>
+        <h2
+          class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
+        >
+          🏆 PRIZES
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="rounded-2xl p-7 bg-gradient-to-b from-[#FFD700]/15 to-[#160E22] border-2 border-transparent relative bg-clip-padding before:content-[''] before:absolute before:inset-[-2px] before:rounded-[inherit] before:bg-[linear-gradient(135deg,#FFD700,#FFA500,#FFD700,#FFEC6E,#FFD700)] before:bg-[length:300%_300%] before:animate-[shimmer-gold_3s_linear_infinite] before:-z-10 text-left"
+          >
+            <div class="text-[2.5rem] mb-4 block">👑</div>
+            <h3 class="font-bold text-indrox-cream text-[1.15rem] mb-3">
+              Weekly Winner
+            </h3>
+            <ul class="list-none flex flex-col gap-2">
+              <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
+                ✓ Hall of Fame feature
+              </li>
+              <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
+                ✓ Internal recognition
+              </li>
+              <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
+                ✓ $50 prize
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="rounded-2xl p-7 bg-gradient-to-b from-indrox-purple/15 to-[#160E22] border-[2px] border-indrox-purple animate-[pulse-border_2s_ease-in-out_infinite] shadow-[0_0_15px_rgba(144,0,255,0.3)]"
+          >
+            <div class="text-[2.5rem] mb-4 block">🥈</div>
+            <h3 class="font-bold text-indrox-cream text-[1.15rem] mb-3">
+              Monthly Champion
+            </h3>
+            <ul class="list-none flex flex-col gap-2">
+              <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
+                ✓ Premium recognition
+              </li>
+              <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
+                ✓ Team celebration
+              </li>
+              <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
+                ✓ $250 prize
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="rounded-2xl p-7 bg-gradient-to-b from-indrox-purple/15 to-[#160E22] border-[2px] border-indrox-purple animate-[pulse-border_2s_ease-in-out_infinite] shadow-[0_0_15px_rgba(144,0,255,0.3)]"
+          >
+            <div class="text-[2.5rem] mb-4 block">🏅</div>
+            <h3 class="font-bold text-indrox-cream text-[1.15rem] mb-3">
+              Grand Final Winner
+            </h3>
+            <ul class="list-none flex flex-col gap-2">
+              <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
+                ✓ Company-wide spotlight
+              </li>
+              <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
+                ✓ Executive recognition
+              </li>
+              <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
+                ✓ $1000 prize
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Requirements -->
+      <div>
+        <h2
+          class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
+        >
+          ✅ REQUIREMENTS
+        </h2>
+        <ul class="list-none flex flex-col gap-[0.9rem]">
+          {
+            [
+              "Solution must use Claude AI as a key component",
+              "Must solve a real operational challenge at Indrox",
+              "Must include a live demo (landing page, tool, or script)",
+              "Presentation time: max 6 minutes",
+              "Any Indrox employee can participate",
+              "Multiple presentations per person are encouraged",
+            ].map((req) => (
+              <li class="flex items-start gap-3 text-indrox-cream/70 text-[0.95rem] leading-relaxed">
+                <span class="text-[#FFD700] font-bold shrink-0 mt-0.5">✓</span>
+                <span>{req}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div
+    class="py-16 px-8 bg-gradient-to-r from-indrox-purple/10 via-transparent to-indrox-purple/10"
+  >
+    <div class="w-full max-w-[750px] mx-auto text-center">
+      <h2 class="font-display text-2xl font-extrabold text-indrox-cream mb-4">
+        Ready to Present?
+      </h2>
+      <p class="text-indrox-cream/70 mb-8 text-base leading-relaxed">
+        Reach out to the Copa Indrox organizers to submit your idea for the next
+        session.
+      </p>
+      <a
+        href="/hall-of-fame"
+        class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-body text-[0.95rem] font-semibold text-white no-underline transition-all duration-300 bg-gradient-to-br from-indrox-purple to-indrox-purple-dark shadow-[0_4px_20px_rgba(144,0,255,0.3)] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(144,0,255,0.45)] w-full sm:w-auto"
+        >View Past Winners →</a
+      >
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer
+    class="text-center py-12 px-6 text-indrox-cream/50 text-[0.85rem] border-t border-white/10"
+  >
+    <p>
+      <span class="text-indrox-purple-light font-bold">Copa Indrox</span> © 2026 —
+      Every Monday, an idea. Every idea, an opportunity.
+    </p>
+    <p class="mt-2 opacity-50">Built with Claude AI and Astro</p>
+  </footer>
+</BaseLayout>

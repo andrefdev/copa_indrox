@@ -1,0 +1,83 @@
+---
+import { formatScore } from '@utils/scores';
+
+interface Props {
+  name: string;
+  role: string;
+  area: string;
+  photo: string;
+  totalScore: number;
+  wins: number;
+  participations: number;
+  slug: string;
+  rank?: number;
+}
+
+const { name, role, area, photo, totalScore, wins, participations, slug, rank } = Astro.props;
+
+function getRankClass(r?: number): string {
+  if (!r) return 'border-indrox-purple/20';
+  if (r === 1) return 'rank-1-border';
+  if (r === 2) return 'rank-2-border';
+  if (r === 3) return 'rank-3-border';
+  if (r <= 10) return 'rank-elite-border';
+  return 'border border-indrox-purple/20';
+}
+
+function getRankBadge(r?: number): string {
+  if (!r) return '';
+  if (r === 1) return '👑 LEGEND';
+  if (r === 2) return '⭐ CHALLENGER';
+  if (r === 3) return '🔥 ASPIRANT';
+  if (r <= 10) return '🎯 ELITE';
+  return '';
+}
+
+const rankClass = getRankClass(rank);
+const rankBadge = getRankBadge(rank);
+---
+
+<a href={`/semana/${slug}`} class="group">
+  <div class={`relative bg-indrox-bg-card rounded-lg p-6 transition-all duration-300 hover:bg-indrox-bg-card-hover cursor-pointer overflow-hidden ${rankClass}`}>
+    {rankBadge && (
+      <div class="absolute top-3 right-3 text-xs font-bold text-indrox-gold bg-indrox-bg-card/80 px-2 py-1 rounded-full">
+        {rankBadge}
+      </div>
+    )}
+
+    <!-- Photo -->
+    <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden bg-indrox-purple/20 border-2 border-indrox-purple">
+      <img
+        src={photo}
+        alt={name}
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Name & Role -->
+    <h3 class="text-lg font-bold text-indrox-cream text-center group-hover:text-indrox-gold transition-colors">
+      {name}
+    </h3>
+    <p class="text-sm text-indrox-purple text-center mb-4">{role}</p>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-2 text-center text-xs mb-3 pb-3 border-b border-indrox-purple/20">
+      <div>
+        <p class="text-indrox-gold font-bold">{formatScore(totalScore)}</p>
+        <p class="text-indrox-cream/60">Points</p>
+      </div>
+      <div>
+        <p class="text-indrox-gold font-bold">{wins}</p>
+        <p class="text-indrox-cream/60">Wins</p>
+      </div>
+      <div>
+        <p class="text-indrox-gold font-bold">{participations}</p>
+        <p class="text-indrox-cream/60">Games</p>
+      </div>
+    </div>
+
+    <!-- Area -->
+    <p class="text-xs text-indrox-purple text-center font-medium">{area}</p>
+  </div>
+</a>
