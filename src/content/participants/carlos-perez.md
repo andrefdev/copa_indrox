@@ -3,10 +3,9 @@ name: "Carlos Pérez"
 role: "Senior Software Engineer"
 area: "Engineering"
 photo: "/images/participants/carlos-perez.svg"
-totalScore: 87.3
-wins: 2
-participations: 4
-joinedWeek: 2
+totalScore: 85.5
+wins: 1
+participations: 2
+joinedWeek: 1
 ---
-
-Carlos leads the backend engineering team at Indrox, specializing in scalable system architecture and API design. He brings expertise in optimization, automation, and leveraging AI to solve complex engineering challenges.
+Carlos es un Senior Software Engineer con amplia experiencia en arquitectura de sistemas y optimización. Su capacidad para identificar ineficiencias operativas y diseñar soluciones escalables lo convierte en un innovador clave dentro del equipo de ingeniería.
