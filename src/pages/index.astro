@@ -5,6 +5,7 @@ import Navigation from "@components/astro/Navigation.astro";
 import HeroSection from "@components/astro/HeroSection.astro";
 import LastWinnerCard from "@components/astro/LastWinnerCard.astro";
 import Podium from "@components/astro/Podium.astro";
+import Footer from "@components/astro/Footer.astro";
 
 // Fetch all content
 const weeks = await getCollection("weeks");
@@ -177,7 +178,7 @@ const topParticipants = [...participants]
         <div
           class="font-display text-[1.35rem] text-indrox-purple-light mb-2 font-bold"
         >
-          10:00–11:40
+          09:00–10:40
         </div>
         <div
           class="text-[0.85rem] text-indrox-cream/60 leading-relaxed font-medium"
@@ -207,7 +208,7 @@ const topParticipants = [...participants]
         <div
           class="font-display text-[1.35rem] text-indrox-purple-light mb-2 font-bold"
         >
-          11:40–11:50
+          10:40–10:50
         </div>
         <div
           class="text-[0.85rem] text-indrox-cream/60 leading-relaxed font-medium"
@@ -409,17 +410,7 @@ const topParticipants = [...participants]
   </div>
 
   <!-- ===== FOOTER ===== -->
-  <footer
-    class="text-center py-12 px-6 text-indrox-cream/50 text-[0.85rem] border-t border-white/10"
-  >
-    <p>
-      <span class="text-indrox-purple-light font-bold">Copa Indrox</span> — Innovación
-      impulsada por el equipo · Temporada 2026
-    </p>
-    <p class="mt-2 opacity-70">
-      Construido con Claude como ejemplo de lo que puedes hacer tú.
-    </p>
-  </footer>
+  <Footer />
 </BaseLayout>
 
 <script>

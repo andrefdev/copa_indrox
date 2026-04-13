@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Navigation from "@components/astro/Navigation.astro";
 import ScoreBar from "@components/astro/ScoreBar.astro";
+import Footer from "@components/astro/Footer.astro";
 ---
 
 <BaseLayout
@@ -161,14 +162,14 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
           {
             [
               {
-                time: "10:00",
+                time: "09:00",
                 event: "Ponente #1 inicia (10 min: presentación + feedback)",
               },
-              { time: "10:10", event: "Ponente #2 (10 min: presentación + feedback)" },
-              { time: "10:20", event: "Ponente #3, #4, #5, #6, #7, #8, #9, #10..." },
-              { time: "~11:40", event: "Fin de presentaciones (hasta 10 ponentes)" },
-              { time: "11:40–11:50", event: "Votación del equipo" },
-              { time: "11:50", event: "Anuncio del ganador" },
+              { time: "09:10", event: "Ponente #2 (10 min: presentación + feedback)" },
+              { time: "09:20", event: "Ponente #3, #4, #5, #6, #7, #8, #9, #10..." },
+              { time: "~10:40", event: "Fin de presentaciones (hasta 10 ponentes)" },
+              { time: "10:40–10:50", event: "Votación del equipo" },
+              { time: "10:50", event: "Anuncio del ganador" },
             ].map((item) => (
               <div class="flex items-center gap-5 bg-[#160E22] border border-indrox-purple/20 rounded-xl px-6 py-[1.1rem] transition-colors hover:border-indrox-purple/40">
                 <span class="font-bold text-[#FFD700] text-[1.1rem] min-w-fit font-display">
@@ -299,13 +300,5 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
   </div>
 
   <!-- Footer -->
-  <footer
-    class="text-center py-12 px-6 text-indrox-cream/50 text-[0.85rem] border-t border-white/10"
-  >
-    <p>
-      <span class="text-indrox-purple-light font-bold">Copa Indrox</span> © 2026 —
-      Cada lunes, una idea. Cada idea, una oportunidad.
-    </p>
-    <p class="mt-2 opacity-50">Construido con Claude AI y Astro</p>
-  </footer>
+  <Footer />
 </BaseLayout>

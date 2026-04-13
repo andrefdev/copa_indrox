@@ -2,6 +2,7 @@
 import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Navigation from "@components/astro/Navigation.astro";
+import Footer from "@components/astro/Footer.astro";
 import { HallOfFame as HallOfFameReact } from "@components/react/HallOfFame";
 import type {
   ParticipantData,
@@ -84,13 +85,5 @@ const participantData: ParticipantData[] = await Promise.all(
   </section>
 
   <!-- Footer -->
-  <footer
-    class="text-center py-12 px-6 text-indrox-cream/50 text-[0.85rem] border-t border-white/10"
-  >
-    <p>
-      <span class="text-indrox-purple-light font-bold">Copa Indrox</span> © 2026 —
-      Every Monday, an idea. Every idea, an opportunity.
-    </p>
-    <p class="mt-2 opacity-50">Built with Claude AI and Astro</p>
-  </footer>
+  <Footer />
 </BaseLayout>

@@ -304,11 +304,11 @@ function ParticipantCardRank1({
 }) {
   return (
     <motion.div
-      className="relative bg-gradient-to-b from-indrox-gold/15 to-indrox-bg-card rounded-xl p-8 rank-1-border overflow-hidden group hover:shadow-2xl hover:shadow-indrox-gold/30 transition-all"
+      className="relative bg-gradient-to-b from-indrox-gold/15 to-indrox-bg-card rounded-xl p-8 rank-1-border overflow-hidden group hover:ring-2 hover:ring-indrox-gold/40 transition-all"
       onClick={onToggleExpand}
     >
       <Suspense fallback={null}>
-        <FireEffect width={600} height={200} intensity={0.8} />
+        <FireEffect width={1200} height={400} intensity={0.8} />
       </Suspense>
 
       <div className="relative z-10 text-center">
@@ -419,10 +419,10 @@ function ParticipantCardRank23({
 
   return (
     <motion.div
-      className={`relative bg-indrox-bg-card rounded-lg p-6 transition-all group hover:shadow-xl ${
+      className={`relative bg-indrox-bg-card rounded-lg p-6 transition-all group ${
         isSilver
-          ? 'rank-2-border hover:shadow-indrox-silver/20'
-          : 'rank-3-border hover:shadow-indrox-bronze/20'
+          ? 'rank-2-border hover:ring-2 hover:ring-indrox-silver/40'
+          : 'rank-3-border hover:ring-2 hover:ring-indrox-bronze/40'
       }`}
       onClick={onToggleExpand}
     >
@@ -529,7 +529,7 @@ function ParticipantCardStandard({
 }) {
   return (
     <motion.div
-      className="relative bg-indrox-bg-card rounded-lg p-4 rank-elite-border transition-all group hover:shadow-lg hover:shadow-indrox-purple/20 cursor-pointer"
+      className="relative bg-indrox-bg-card rounded-lg p-4 rank-elite-border transition-all group hover:ring-2 hover:ring-indrox-purple/40 cursor-pointer"
       onClick={onToggleExpand}
     >
       <div className="relative z-10">
