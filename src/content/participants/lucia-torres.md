@@ -2,7 +2,7 @@
 name: "Lucía Torres"
 role: "Product Lead"
 area: "Product"
-photo: "/images/participants/lucia-torres.jpg"
+photo: "/images/participants/lucia-torres.svg"
 totalScore: 91.2
 wins: 2
 participations: 4

@@ -2,7 +2,7 @@
 name: "María Martínez"
 role: "Marketing Manager"
 area: "Marketing"
-photo: "/images/participants/maria-martinez.jpg"
+photo: "/images/participants/maria-martinez.svg"
 totalScore: 78.9
 wins: 1
 participations: 3

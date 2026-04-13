@@ -2,7 +2,7 @@
 name: "Carlos Pérez"
 role: "Senior Software Engineer"
 area: "Engineering"
-photo: "/images/participants/carlos-perez.jpg"
+photo: "/images/participants/carlos-perez.svg"
 totalScore: 87.3
 wins: 2
 participations: 4
