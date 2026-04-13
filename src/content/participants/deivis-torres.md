@@ -1,7 +1,7 @@
 ---
 name: "Deivis Torres"
 role: "Tech Lead"
-area: "Product"
+area: "Engineering"
 photo: "/images/participants/deivis-torres.png"
 totalScore: 91.2
 wins: 1
