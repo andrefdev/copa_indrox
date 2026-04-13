@@ -38,59 +38,40 @@ const topParticipants = [...participants]
     class="w-full max-w-6xl mx-auto py-20 px-6 sm:px-8"
   >
     <div class="mb-14 flex flex-col items-center text-center reveal">
-      <div
-        class="font-display text-sm tracking-[3px] text-indrox-purple-light uppercase mb-3 font-bold"
-      >
-        El juego
-      </div>
       <h2
         class="font-display text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.1] mb-5 text-indrox-cream font-extrabold"
       >
-        ¿Cómo funciona?
+        Cada lunes: pitches + feedback + voto
       </h2>
       <p
         class="text-indrox-cream/60 text-base leading-relaxed max-w-2xl text-center mx-auto"
       >
-        Un ciclo semanal de innovación donde cada miembro del equipo tiene la
-        oportunidad de proponer mejoras reales para la empresa, construidas con
-        inteligencia artificial.
+        Hasta 10 presentaciones de 10 minutos. Feedback directo. Al final, el equipo elige al ganador.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
       {
         [
           {
-            num: "01",
             icon: "🧠",
-            title: "Identifica un problema",
-            desc: "Encuentra un dolor, una ineficiencia o una oportunidad de mejora en las operaciones, procesos o herramientas de la empresa.",
+            title: "Idea + Claude",
+            desc: "Identifica un problema. Resuélvelo con Claude.",
           },
           {
-            num: "02",
-            icon: "🤖",
-            title: "Constrúyelo con Claude",
-            desc: "Usa Claude como tu copiloto para diseñar la solución: automatizaciones, dashboards, herramientas internas, workflows.",
-          },
-          {
-            num: "03",
-            icon: "🎨",
-            title: "Arma tu landing page",
-            desc: "Presenta tu propuesta en una landing funcional que explique el problema, la solución y el impacto esperado.",
-          },
-          {
-            num: "04",
             icon: "🎤",
-            title: "Pitch del lunes",
-            desc: "Cada lunes, un participante tiene 5 minutos para pitch + 3 minutos de preguntas. El equipo vota y decide al ganador.",
+            title: "10 min de pitch",
+            desc: "Presenta tu solución. Demo en vivo. Claro y directo.",
+          },
+          {
+            icon: "🗳️",
+            title: "Feedback + voto",
+            desc: "El equipo opina. Luego vota. Ganador anunciado.",
           },
         ].map((step) => (
-          <div class="relative overflow-hidden group bg-[#160E22] border border-white/5 rounded-2xl p-8 transition-all duration-300 hover:bg-[#1F1530] hover:border-indrox-purple/15 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(144,0,255,0.08)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:bg-gradient-to-r before:from-indrox-purple before:to-indrox-purple-light before:opacity-0 hover:before:opacity-100 before:transition-opacity reveal">
-            <div class="font-display text-5xl text-indrox-purple/10 leading-none mb-3 font-bold">
-              {step.num}
-            </div>
+          <div class="bg-[#160E22] border border-white/5 rounded-2xl p-8 transition-all duration-300 hover:bg-[#1F1530] hover:border-indrox-purple/15 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(144,0,255,0.08)] text-center reveal">
             <div class="text-4xl mb-5 block">{step.icon}</div>
-            <h3 class="text-xl font-bold mb-3 text-indrox-cream tracking-[[-0.3px]]">
+            <h3 class="text-xl font-bold mb-3 text-indrox-cream">
               {step.title}
             </h3>
             <p class="text-indrox-cream/65 text-[0.95rem] leading-relaxed">
@@ -192,76 +173,46 @@ const topParticipants = [...participants]
       <div
         class="flex-1 py-10 px-5 text-center bg-[#160E22] border-b md:border-b-0 md:border-r border-white/5 last:border-0 transition-all duration-300 hover:bg-[#1F1530] hover:-translate-y-0.5"
       >
-        <div class="text-[1.75rem] mb-3 block">📋</div>
+        <div class="text-[1.75rem] mb-3 block">🎤</div>
         <div
           class="font-display text-[1.35rem] text-indrox-purple-light mb-2 font-bold"
         >
-          0–1 min
+          10:00–11:40
         </div>
         <div
           class="text-[0.85rem] text-indrox-cream/60 leading-relaxed font-medium"
         >
-          Intro y contexto del problema
+          Hasta 10 ponentes × 10 min
         </div>
       </div>
       <div
         class="flex-1 py-10 px-5 text-center bg-[#160E22] border-b md:border-b-0 md:border-r border-white/5 last:border-0 transition-all duration-300 hover:bg-[#1F1530] hover:-translate-y-0.5"
       >
-        <div class="text-[1.75rem] mb-3 block">💡</div>
+        <div class="text-[1.75rem] mb-3 block">💬</div>
         <div
           class="font-display text-[1.35rem] text-indrox-purple-light mb-2 font-bold"
         >
-          1–4 min
+          Durante
         </div>
         <div
           class="text-[0.85rem] text-indrox-cream/60 leading-relaxed font-medium"
         >
-          Demo de la solución
+          Feedback tras cada pitch
         </div>
       </div>
       <div
         class="flex-1 py-10 px-5 text-center bg-[#160E22] border-b md:border-b-0 md:border-r border-white/5 last:border-0 transition-all duration-300 hover:bg-[#1F1530] hover:-translate-y-0.5"
       >
-        <div class="text-[1.75rem] mb-3 block">📊</div>
+        <div class="text-[1.75rem] mb-3 block">🗳️</div>
         <div
           class="font-display text-[1.35rem] text-indrox-purple-light mb-2 font-bold"
         >
-          4–5 min
+          11:40–11:50
         </div>
         <div
           class="text-[0.85rem] text-indrox-cream/60 leading-relaxed font-medium"
         >
-          Impacto esperado
-        </div>
-      </div>
-      <div
-        class="flex-1 py-10 px-5 text-center bg-[#160E22] border-b md:border-b-0 md:border-r border-white/5 last:border-0 transition-all duration-300 hover:bg-[#1F1530] hover:-translate-y-0.5"
-      >
-        <div class="text-[1.75rem] mb-3 block">🙋</div>
-        <div
-          class="font-display text-[1.35rem] text-indrox-purple-light mb-2 font-bold"
-        >
-          5–8 min
-        </div>
-        <div
-          class="text-[0.85rem] text-indrox-cream/60 leading-relaxed font-medium"
-        >
-          Preguntas del equipo
-        </div>
-      </div>
-      <div
-        class="flex-1 py-10 px-5 text-center bg-[#160E22] border-b md:border-b-0 md:border-r border-white/5 last:border-0 transition-all duration-300 hover:bg-[#1F1530] hover:-translate-y-0.5"
-      >
-        <div class="text-[1.75rem] mb-3 block">⭐</div>
-        <div
-          class="font-display text-[1.35rem] text-indrox-purple-light mb-2 font-bold"
-        >
-          8–10 min
-        </div>
-        <div
-          class="text-[0.85rem] text-indrox-cream/60 leading-relaxed font-medium"
-        >
-          Votación y resultados
+          Votación y ganador
         </div>
       </div>
     </div>
@@ -292,7 +243,7 @@ const topParticipants = [...participants]
       <div
         class="relative overflow-hidden bg-[#160E22] border border-white/5 rounded-2xl p-10 transition-all duration-300 hover:bg-[#1F1530] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(144,0,255,0.08)] !border-t-4 !border-t-indrox-purple-light reveal"
       >
-        <div class="text-[3rem] mb-5 block">🥈</div>
+        <div class="text-[3rem] mb-5 block">🏆</div>
         <h3
           class="font-display text-[1.7rem] tracking-[0.5px] mb-2 text-indrox-cream font-bold"
         >
@@ -307,162 +258,56 @@ const topParticipants = [...participants]
           <li
             class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
           >
-            Trofeo rotativo en tu escritorio
+            Perfil destacado en la web
           </li>
           <li
             class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
           >
-            Medio día libre a elección
+            Post de reconocimiento en LinkedIn
           </li>
           <li
             class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
           >
-            Gift card de S/50
-          </li>
-          <li
-            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
-          >
-            Reconocimiento público
+            Reconocimiento público en la sesión
           </li>
         </ul>
       </div>
 
       <div
-        class="relative overflow-hidden bg-[#160E22] border border-white/5 rounded-2xl p-10 transition-all duration-300 hover:bg-[#1F1530] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(144,0,255,0.08)] !border-t-4 !border-t-indrox-purple reveal"
+        class="relative overflow-hidden bg-gradient-to-b from-[#FFD700]/10 to-[#160E22] via-[40%] border border-white/5 rounded-2xl p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(255,215,0,0.15)] !border-t-4 !border-t-[#FFD700] reveal"
       >
-        <div class="text-[3rem] mb-5 block">🥇</div>
+        <div class="text-[3rem] mb-5 block">💰</div>
         <h3
           class="font-display text-[1.7rem] tracking-[0.5px] mb-2 text-indrox-cream font-bold"
         >
           Campeón Mensual
         </h3>
         <div
-          class="text-[0.75rem] text-indrox-purple-light uppercase tracking-[1.5px] mb-6 font-semibold"
+          class="text-[0.75rem] text-[#FFD700] uppercase tracking-[1.5px] mb-6 font-semibold"
         >
-          Mejor de 4 semanas
+          Quien más semanas gane en el mes
         </div>
         <ul class="list-none flex flex-col gap-3 m-0 p-0 text-left">
           <li
-            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
+            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-[#FFD700] before:font-bold"
           >
-            Bono económico especial
+            S/100 USD por cada semana ganada
           </li>
           <li
-            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
+            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-[#FFD700] before:font-bold"
           >
-            Curso o certificación a elección
+            Perfil destacado con badge especial
           </li>
           <li
-            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
+            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-[#FFD700] before:font-bold"
           >
-            Día completo libre
-          </li>
-          <li
-            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
-          >
-            Feature en Hall of Fame
-          </li>
-        </ul>
-      </div>
-
-      <div
-        class="relative overflow-hidden bg-gradient-to-b from-indrox-purple/10 to-[#160E22] via-[40%] border border-white/5 rounded-2xl p-10 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(144,0,255,0.08)] !border-t-4 !border-t-indrox-purple-light reveal"
-      >
-        <div class="text-[3rem] mb-5 block">🏆</div>
-        <h3
-          class="font-display text-[1.7rem] tracking-[0.5px] mb-2 text-indrox-cream font-bold"
-        >
-          Gran Final Indrox
-        </h3>
-        <div
-          class="text-[0.75rem] text-indrox-purple-light uppercase tracking-[1.5px] mb-6 font-semibold"
-        >
-          Cada trimestre
-        </div>
-        <ul class="list-none flex flex-col gap-3 m-0 p-0 text-left">
-          <li
-            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
-          >
-            Tu idea se implementa con presupuesto
-          </li>
-          <li
-            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
-          >
-            Lideras el mini-proyecto resultante
-          </li>
-          <li
-            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
-          >
-            Premio económico premium
-          </li>
-          <li
-            class="text-indrox-cream/65 text-[0.95rem] pl-7 relative leading-relaxed before:content-['→'] before:absolute before:left-0 before:text-indrox-purple-light before:font-bold"
-          >
-            Upgrade de equipo a elección
+            Reconocimiento en reunión de empresa
           </li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ===== VALOR PARA TI ===== -->
-  <section class="w-full max-w-6xl mx-auto py-20 px-6 sm:px-8">
-    <div class="mb-14 flex flex-col items-center text-center reveal">
-      <div
-        class="font-display text-sm tracking-[3px] text-indrox-purple-light uppercase mb-3 font-bold"
-      >
-        Tu crecimiento
-      </div>
-      <h2
-        class="font-display text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.1] mb-5 text-indrox-cream font-extrabold"
-      >
-        ¿Qué ganas más allá del premio?
-      </h2>
-      <p
-        class="text-indrox-cream/60 text-base leading-relaxed max-w-2xl text-center mx-auto"
-      >
-        Cada participación es una inversión en tu perfil profesional. Estas son
-        habilidades que el mercado está pidiendo hoy.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-      {
-        [
-          {
-            icon: "🤖",
-            title: "Dominio de IA aplicada",
-            desc: "Aprendes a usar Claude para resolver problemas reales, no solo chatear. Eso te diferencia.",
-          },
-          {
-            icon: "🎯",
-            title: "Pensamiento de producto",
-            desc: "Identificar problemas, diseñar soluciones y medir impacto. La mentalidad que busca todo líder.",
-          },
-          {
-            icon: "🗣️",
-            title: "Presentación y storytelling",
-            desc: "Cada pitch te hace mejor comunicador. Una habilidad que multiplica todas las demás.",
-          },
-          {
-            icon: "💻",
-            title: "Portafolio personal",
-            desc: "Cada landing que armas es un proyecto demostrable. Al cabo de meses, tienes un portafolio real.",
-          },
-        ].map((value) => (
-          <div class="bg-[#160E22] border border-white/5 rounded-2xl p-8 transition-all duration-300 hover:bg-[#1F1530] hover:border-indrox-purple/15 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(144,0,255,0.08)] text-center flex flex-col items-center reveal">
-            <div class="text-[3rem] mb-5 block">{value.icon}</div>
-            <h3 class="text-[1.2rem] mb-3 text-indrox-cream font-bold tracking-[[-0.3px]]">
-              {value.title}
-            </h3>
-            <p class="text-indrox-cream/65 text-[0.95rem] leading-relaxed">
-              {value.desc}
-            </p>
-          </div>
-        ))
-      }
-    </div>
-  </section>
 
   <!-- ===== GANADOR ACTUAL ===== -->
   {

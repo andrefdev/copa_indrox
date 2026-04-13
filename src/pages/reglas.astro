@@ -18,11 +18,10 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
       <h1
         class="font-display text-[clamp(2.5rem,6vw,3.75rem)] font-extrabold text-indrox-cream mb-4 tracking-tight"
       >
-        HOW IT WORKS
+        Las Reglas del Juego
       </h1>
       <p class="text-[1.2rem] text-indrox-purple-light leading-relaxed">
-        Understand the Copa Indrox competition format, evaluation criteria, and
-        prizes.
+        Formato, evaluación, premios y todo lo que necesitas saber para participar.
       </p>
     </div>
   </section>
@@ -35,30 +34,30 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
         <h2
           class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
         >
-          📋 THE FORMAT
+          📋 El Formato
         </h2>
         <div class="flex flex-col gap-5">
           {
             [
               {
                 step: 1,
-                title: "Proposal Submission",
-                desc: "Submit your operational improvement idea built with Claude AI.",
+                title: "Idea + Claude",
+                desc: "Identifica un problema real. Resuélvelo usando Claude como herramienta central.",
               },
               {
                 step: 2,
-                title: "Presentation",
-                desc: "Present your solution on Monday for 10 minutes with live demo.",
+                title: "Pitch de 10 minutos",
+                desc: "Cada lunes presenta tu solución en vivo. Demo funcional, explicación clara.",
               },
               {
                 step: 3,
-                title: "Evaluation",
-                desc: "The team evaluates your work across Impact, Presentation, and Creativity.",
+                title: "Feedback del equipo",
+                desc: "Tras cada pitch, el equipo opina y hace preguntas. Aprendes en vivo.",
               },
               {
                 step: 4,
-                title: "Winner Announcement",
-                desc: "The top scorer wins weekly, monthly, and quarterly prizes.",
+                title: "Votación y ganador",
+                desc: "Al final de todos los pitches, votación y anuncio del ganador de la semana.",
               },
             ].map((item) => (
               <div class="flex gap-5 items-start">
@@ -84,11 +83,10 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
         <h2
           class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
         >
-          ⭐ EVALUATION CRITERIA
+          ⭐ Criterios de Evaluación
         </h2>
         <p class="text-indrox-cream/70 mb-8 leading-relaxed">
-          All presentations are scored on three dimensions. The total score
-          determines the winner.
+          Tres ejes claros. Todos puntúan de 0-10 en cada eje. La suma define al ganador.
         </p>
 
         <div
@@ -96,29 +94,27 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
         >
           <div class="py-4">
             <div class="flex justify-between items-center mb-4">
-              <h3 class="text-[1.15rem] font-bold text-indrox-cream">Impact</h3>
-              <span class="text-[#FFD700] font-bold text-base">33%</span>
+              <h3 class="text-[1.15rem] font-bold text-indrox-cream">💥 Impacto</h3>
+              <span class="text-[#FFD700] font-bold text-base">40%</span>
             </div>
             <p class="text-indrox-cream/70 mb-4 text-[0.95rem] leading-relaxed">
-              How much does this solution improve operations? Will it save time,
-              reduce costs, or improve quality?
+              ¿Cuánto tiempo, dinero o fricción ahorra? ¿Resuelve un problema real?
             </p>
-            <ScoreBar label="Impact Score (0-10)" score={8} />
+            <ScoreBar label="Puntaje de Impacto (0-10)" score={8} />
           </div>
 
           <div class="py-4 border-t border-indrox-purple/20 pt-8 mt-4">
             <div class="flex justify-between items-center mb-4">
               <h3 class="text-[1.15rem] font-bold text-indrox-cream">
-                Presentation
+                ✨ Presentación
               </h3>
-              <span class="text-[#FFD700] font-bold text-base">33%</span>
+              <span class="text-[#FFD700] font-bold text-base">30%</span>
             </div>
             <p class="text-indrox-cream/70 mb-4 text-[0.95rem] leading-relaxed">
-              How well is the idea communicated? Is the demo clear, engaging,
-              and professional?
+              ¿La landing es clara y profesional? ¿El pitch fue convincente?
             </p>
             <ScoreBar
-              label="Presentation Score (0-10)"
+              label="Puntaje de Presentación (0-10)"
               score={9}
               color="purple"
             />
@@ -127,16 +123,15 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
           <div class="py-4 border-t border-indrox-purple/20 pt-8 mt-4">
             <div class="flex justify-between items-center mb-4">
               <h3 class="text-[1.15rem] font-bold text-indrox-cream">
-                Creativity
+                🧪 Creatividad
               </h3>
-              <span class="text-[#FFD700] font-bold text-base">33%</span>
+              <span class="text-[#FFD700] font-bold text-base">30%</span>
             </div>
             <p class="text-indrox-cream/70 mb-4 text-[0.95rem] leading-relaxed">
-              How innovative is the solution? Does it use Claude in a novel or
-              unexpected way?
+              ¿Qué tan bien aprovechó las capacidades de Claude?
             </p>
             <ScoreBar
-              label="Creativity Score (0-10)"
+              label="Puntaje de Creatividad (0-10)"
               score={8.5}
               color="gold"
             />
@@ -147,10 +142,10 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
           class="mt-8 bg-indrox-purple/10 border border-indrox-purple/30 rounded-xl p-6"
         >
           <p class="font-bold text-indrox-cream mb-1.5">
-            Maximum Total Score: 30 points
+            Puntaje Máximo: 30 puntos
           </p>
           <p class="text-indrox-cream/70 text-[0.9rem]">
-            Total Score = Impact + Presentation + Creativity (each 0-10)
+            Puntaje Total = Impacto + Presentación + Creatividad (cada 0-10)
           </p>
         </div>
       </div>
@@ -160,20 +155,20 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
         <h2
           class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
         >
-          ⏱️ SESSION TIMELINE
+          ⏱️ Timeline del Lunes
         </h2>
         <div class="flex flex-col gap-3">
           {
             [
               {
-                time: "09:50",
-                event: "Presenter joins call (technical check)",
+                time: "10:00",
+                event: "Ponente #1 inicia (10 min: presentación + feedback)",
               },
-              { time: "10:00", event: "Introduction & context (1 min)" },
-              { time: "10:01", event: "Live demo & presentation (6 min)" },
-              { time: "10:07", event: "Q&A from team (2 min)" },
-              { time: "10:09", event: "Voting & scoring begins" },
-              { time: "10:10", event: "Results announced" },
+              { time: "10:10", event: "Ponente #2 (10 min: presentación + feedback)" },
+              { time: "10:20", event: "Ponente #3, #4, #5, #6, #7, #8, #9, #10..." },
+              { time: "~11:40", event: "Fin de presentaciones (hasta 10 ponentes)" },
+              { time: "11:40–11:50", event: "Votación del equipo" },
+              { time: "11:50", event: "Anuncio del ganador" },
             ].map((item) => (
               <div class="flex items-center gap-5 bg-[#160E22] border border-indrox-purple/20 rounded-xl px-6 py-[1.1rem] transition-colors hover:border-indrox-purple/40">
                 <span class="font-bold text-[#FFD700] text-[1.1rem] min-w-fit font-display">
@@ -191,7 +186,7 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
         <h2
           class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
         >
-          🏆 PRIZES
+          🏆 Premios
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
@@ -199,17 +194,17 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
           >
             <div class="text-[2.5rem] mb-4 block">👑</div>
             <h3 class="font-bold text-indrox-cream text-[1.15rem] mb-3">
-              Weekly Winner
+              Ganador Semanal
             </h3>
             <ul class="list-none flex flex-col gap-2">
               <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
-                ✓ Hall of Fame feature
+                ✓ Hall of Fame
               </li>
               <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
-                ✓ Internal recognition
+                ✓ Reconocimiento público
               </li>
               <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
-                ✓ $50 prize
+                ✓ S/100 USD
               </li>
             </ul>
           </div>
@@ -217,19 +212,19 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
           <div
             class="rounded-2xl p-7 bg-gradient-to-b from-indrox-purple/15 to-[#160E22] border-[2px] border-indrox-purple animate-[pulse-border_2s_ease-in-out_infinite] shadow-[0_0_15px_rgba(144,0,255,0.3)]"
           >
-            <div class="text-[2.5rem] mb-4 block">🥈</div>
+            <div class="text-[2.5rem] mb-4 block">🥇</div>
             <h3 class="font-bold text-indrox-cream text-[1.15rem] mb-3">
-              Monthly Champion
+              Campeón Mensual
             </h3>
             <ul class="list-none flex flex-col gap-2">
               <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
-                ✓ Premium recognition
+                ✓ Reconocimiento premium
               </li>
               <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
-                ✓ Team celebration
+                ✓ Celebración del equipo
               </li>
               <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
-                ✓ $250 prize
+                ✓ S/500 USD
               </li>
             </ul>
           </div>
@@ -239,17 +234,17 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
           >
             <div class="text-[2.5rem] mb-4 block">🏅</div>
             <h3 class="font-bold text-indrox-cream text-[1.15rem] mb-3">
-              Grand Final Winner
+              Ganador Final
             </h3>
             <ul class="list-none flex flex-col gap-2">
               <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
-                ✓ Company-wide spotlight
+                ✓ Spotlight en la empresa
               </li>
               <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
-                ✓ Executive recognition
+                ✓ Reconocimiento ejecutivo
               </li>
               <li class="text-indrox-cream/70 text-[0.9rem] leading-relaxed">
-                ✓ $1000 prize
+                ✓ S/1000 USD
               </li>
             </ul>
           </div>
@@ -261,17 +256,17 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
         <h2
           class="font-display text-[1.75rem] font-extrabold text-indrox-cream mb-8"
         >
-          ✅ REQUIREMENTS
+          ✅ Requisitos
         </h2>
         <ul class="list-none flex flex-col gap-[0.9rem]">
           {
             [
-              "Solution must use Claude AI as a key component",
-              "Must solve a real operational challenge at Indrox",
-              "Must include a live demo (landing page, tool, or script)",
-              "Presentation time: max 6 minutes",
-              "Any Indrox employee can participate",
-              "Multiple presentations per person are encouraged",
+              "La solución debe usar Claude como componente clave",
+              "Debe resolver un problema operativo real de Indrox",
+              "Debe incluir demo en vivo (landing, herramienta, script)",
+              "Tiempo de presentación: 10 minutos (presentación + feedback)",
+              "Cualquier empleado de Indrox puede participar",
+              "Se anima a participaciones múltiples",
             ].map((req) => (
               <li class="flex items-start gap-3 text-indrox-cream/70 text-[0.95rem] leading-relaxed">
                 <span class="text-[#FFD700] font-bold shrink-0 mt-0.5">✓</span>
@@ -290,16 +285,15 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
   >
     <div class="w-full max-w-[750px] mx-auto text-center">
       <h2 class="font-display text-2xl font-extrabold text-indrox-cream mb-4">
-        Ready to Present?
+        ¿Listo para presentar?
       </h2>
       <p class="text-indrox-cream/70 mb-8 text-base leading-relaxed">
-        Reach out to the Copa Indrox organizers to submit your idea for the next
-        session.
+        Contacta a los organizadores de Copa Indrox para enviar tu idea para la próxima sesión.
       </p>
       <a
         href="/hall-of-fame"
         class="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-body text-[0.95rem] font-semibold text-white no-underline transition-all duration-300 bg-gradient-to-br from-indrox-purple to-indrox-purple-dark shadow-[0_4px_20px_rgba(144,0,255,0.3)] hover:-translate-y-0.5 hover:shadow-[0_8px_32px_rgba(144,0,255,0.45)] w-full sm:w-auto"
-        >View Past Winners →</a
+        >Ver Ganadores Anteriores →</a
       >
     </div>
   </div>
@@ -310,8 +304,8 @@ import ScoreBar from "@components/astro/ScoreBar.astro";
   >
     <p>
       <span class="text-indrox-purple-light font-bold">Copa Indrox</span> © 2026 —
-      Every Monday, an idea. Every idea, an opportunity.
+      Cada lunes, una idea. Cada idea, una oportunidad.
     </p>
-    <p class="mt-2 opacity-50">Built with Claude AI and Astro</p>
+    <p class="mt-2 opacity-50">Construido con Claude AI y Astro</p>
   </footer>
 </BaseLayout>
