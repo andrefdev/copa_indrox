@@ -4,7 +4,7 @@ role: "Senior Software Engineer"
 area: "Engineering"
 photo: "/images/participants/juan-gomez.png"
 totalScore: 87.3
-wins: 0
+wins: 1
 participations: 1
 joinedWeek: 2
 ---
